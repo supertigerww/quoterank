@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Author Quote</title>
+</head>
+<body>
+    <a routerLink="/">Home</a>
+    <a (click)="showupload(authorid)">Add a new quote</a>
+    <div class ="allquotes">
+        <table border= "1">
+          <tr>
+            <th>Quote</th>
+            <th>Vote</th>
+            <th>Actions Available</th>
+          </tr>
+          <tr *ngFor="let quote of author">
+            <th>{{quote.content}}</th>
+            <th>{{quote.vote}}</th>
+            <th><button (click)="upvote(quote._id)">Upvote</button><button (click)="downvote(quote._id)">Downvote</button><button (click)="deletequote(quote._id)">Delete</button></th>
+          </tr>
+        </table>
+    </div>
+</body>
+</html>

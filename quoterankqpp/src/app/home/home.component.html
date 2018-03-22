@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>All Authors</title>
+</head>
+<body>
+    <a routerLink ='/new'>Add a quotable author</a>
+    <div class="allauthors">
+      <table border= "1">
+        <tr>
+          <th>Author</th>
+          <th>Actions Available</th>
+        </tr>
+        <tr *ngFor="let author of authors">
+          <th>{{author.name}}</th>
+          <th><button (click)="showquotes(author._id)">Show Quotes</button></th>
+        </tr>
+      </table>
+    </div>
+</body>
+</html>

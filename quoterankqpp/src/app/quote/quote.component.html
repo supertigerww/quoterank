@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Quote</title>
+</head>
+<body>
+    <a routerLink='/'>Home</a>
+    <p *ngIf="error">{{error.errors.name.message}}</p>
+    <h2>Add a quote here</h2>
+    <form (submit)="addquote()" class="postform">
+      Quote:<input type="text" name ="newquote.name" [(ngModel)]="newquote.content"><br>
+      <input type="submit" value="Submit">
+      <button [routerLink]="['/']">Cancel</button>
+    </form>
+</body>
+</html>

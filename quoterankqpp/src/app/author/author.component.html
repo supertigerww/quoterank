@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add an author</title>
+</head>
+<body>
+    <a routerLink="/">Home</a>
+    <p *ngIf="error">{{error.errors.name.message}}</p>
+    <p *ngIf="existerror">{{existerror.error}}</p>
+    <h2>Add an author here</h2>
+    <form (submit)="addauthor()" class="postform">
+      Author Name:<input type="text" name ="newauthor.name" [(ngModel)]="newauthor.name"><br>
+      <input type="submit" value="Create">
+    </form>
+</body>
+</html>
