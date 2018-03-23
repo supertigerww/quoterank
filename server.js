@@ -103,15 +103,20 @@ app.get('/authors/:authorid',function(req,res){
 })
 
 app.post('/quotes/:authorid',function(req,res){
-    Author.update({_id:req.params.authorid},{$push:{quotes:req.body}},function(err,author){
-        if(err){
-            console.log(err);
-            res.json({message:"Error",errors:err})
-        }
-        else{
-            res.json({message:"Add quote success"})
-        }
-    })
+    if(req.body.content.length < 3){
+        res.json({message:"QuoteError",error:"A quote must contain at least 3 characters!"})
+    }else{
+        Author.update({_id:req.params.authorid},{$push:{quotes:req.body}},function(err,author){
+            if(err){
+                console.log(err);
+                res.json({message:"Error",errors:err})
+            }
+            else{
+                res.json({message:"Add quote success"})
+            }
+        })
+    }
+        
 })
 
 app.post('/upquote/:authorid/',function(req,res){
@@ -146,6 +151,47 @@ app.post('/deletequote/:authorid',function(req,res){
         }
         else{
             res.json({messasge:"delete quote success"})
+        }
+    })
+})
+
+app.put('/authors/:authorid',function(req,res){
+    console.log(req.body);
+    let name = req.body.name;
+    Author.findOne({name:name},function(err,data){
+        if(data){
+            console.log(data);
+            console.log(err);
+            res.json({message:"ExistError",error:"This author already exists"})
+        }else{
+           Author.findOne({_id:req.params.authorid},function(err,author){
+            if(err){
+                console.log(err);
+                res.json({message:"Error",errors:err})
+            }else{
+                author.name = req.body.name;
+                author.save(function(err){
+                    if(err){
+                        console.log(err);
+                        res.json({message:"Error",errors:err})
+                    }else{
+                        res.json({message:"Update Success"})
+                    }
+                })
+            }
+           })
+        }
+    })
+})
+
+app.delete('/authors/:authorid',function(req,res){
+    Author.remove({_id:req.params.authorid},function(err,author){
+        if(err){
+            console.log(err);
+            res.json({message:"Error",errors:err})
+        }
+        else{
+            res.json({message:"Delete Success"})
         }
     })
 })

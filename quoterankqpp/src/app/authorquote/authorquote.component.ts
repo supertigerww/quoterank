@@ -11,7 +11,7 @@ export class AuthorquoteComponent implements OnInit {
   author=[];
   authorid;
   quoteid;
-
+  lolid;
   constructor(
     private _httpService:HttpService,
     private _route: ActivatedRoute,
@@ -19,8 +19,10 @@ export class AuthorquoteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._route.params.subscribe((params: Params) => this.authorid=params['authorid']);
+    this._route.params.subscribe((params: Params) => this.authorid=params['authorid']); 
     this.getAuthorFromService(this.authorid);
+    this.lolid=this.getlolid();
+    console.log("this is lolid",this.lolid)
   }
   getAuthorFromService(authorid){
     let obs = this._httpService.getauthor(this.authorid)
@@ -49,8 +51,7 @@ export class AuthorquoteComponent implements OnInit {
     this.getAuthorFromService(this.authorid)
   }
 
-  showupload(authorid){
-    this._router.navigate(['/write/'+authorid])
+  getlolid(){
+    return this._httpService.tempid
   }
-
 }

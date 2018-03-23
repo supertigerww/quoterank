@@ -11,7 +11,6 @@ export class QuoteComponent implements OnInit {
   newquote;
   authorid;
   error;
-  existerror;
 
 
   constructor(
@@ -30,10 +29,9 @@ export class QuoteComponent implements OnInit {
     obs.subscribe(data => {
       console.log("add quote success",data);
       console.log("Add Success!",data);
-      if (data['message'] == "Error"){
-        this.error=data['errors']
+      if (data['message'] == "QuoteError"){
+        this.error=data['error']
         this._router.navigate(['/write/'+this.authorid])
-        this.existerror=""
       }else{
         this._router.navigate(['/quotes/'+this.authorid])
 

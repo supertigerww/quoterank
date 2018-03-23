@@ -16,7 +16,7 @@
         </tr>
         <tr *ngFor="let author of authors">
           <th>{{author.name}}</th>
-          <th><button (click)="showquotes(author._id)">Show Quotes</button></th>
+          <th><button (click)="showquotes(author._id)">Show Quotes</button><button (click)="showedit(author._id)">Edit</button></th>
         </tr>
       </table>
     </div>

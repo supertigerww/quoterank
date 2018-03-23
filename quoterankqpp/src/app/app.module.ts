@@ -10,7 +10,8 @@ import { AuthorquoteComponent } from './authorquote/authorquote.component';
 import { QuoteComponent } from './quote/quote.component';
 import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http' 
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { EditauthorComponent } from './editauthor/editauthor.component'
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms'
     HomeComponent,
     AuthorComponent,
     AuthorquoteComponent,
-    QuoteComponent
+    QuoteComponent,
+    EditauthorComponent
   ],
   imports: [
     BrowserModule,

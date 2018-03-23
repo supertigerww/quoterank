@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
     this._router.navigate(['/quotes/'+authorid])
   }
 
+  showedit(authorid){
+    this._router.navigate(['/edit/'+authorid])
+  }
+
 
 
 

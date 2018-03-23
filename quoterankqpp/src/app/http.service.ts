@@ -4,12 +4,15 @@ import { HttpClient } from '@angular/common/http'
 @Injectable()
 export class HttpService {
 
+  tempid;
+
   constructor(private _http:HttpClient) { }
 
   getauthors(){
     return this._http.get('/authors')
   }
   getauthor(authorid){
+    this.tempid = authorid;
     return this._http.get('/authors/'+authorid)
   }
 
@@ -34,5 +37,13 @@ export class HttpService {
     console.log(authorid);
     console.log(newquote);
     return this._http.post('/quotes/'+authorid,newquote)
+  }
+
+  editauthorname(authorid, updatedauthor){
+    console.log(updatedauthor);
+    return this._http.put('/authors/'+authorid,updatedauthor)
+  }
+  getid(){
+    return this.tempid;
   }
 }

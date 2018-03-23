@@ -8,7 +8,7 @@
 </head>
 <body>
     <a routerLink='/'>Home</a>
-    <p *ngIf="error">{{error.errors.name.message}}</p>
+    <p *ngIf="error">{{error}}</p>
     <h2>Add a quote here</h2>
     <form (submit)="addquote()" class="postform">
       Quote:<input type="text" name ="newquote.name" [(ngModel)]="newquote.content"><br>
